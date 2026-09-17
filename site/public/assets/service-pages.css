@@ -1,0 +1,107 @@
+/* Services: a garage photograph, open text columns, and one practical quote note. */
+.work-intro{background:#f3f5f7;overflow:hidden}
+.work-intro-grid{display:grid;grid-template-columns:1fr 1.13fr;align-items:stretch;gap:55px;min-height:510px}
+.work-intro-copy{padding:35px 0 55px;align-self:center}
+.work-intro .breadcrumb{color:#53606c;margin-bottom:35px}
+.work-intro .breadcrumb a{color:#18232e}
+.work-intro h1{font-size:clamp(2.7rem,4.2vw,4.3rem);font-weight:600;line-height:1.12;margin-bottom:22px}
+.work-intro-copy>p:not(.eyebrow){font-size:1.125rem;max-width:37ch;line-height:1.7;color:#46535e;margin-bottom:28px}
+.work-intro .eyebrow{font-size:.8125rem;letter-spacing:.08em;margin-bottom:18px}
+.work-photo{margin:0;position:relative;min-width:0;min-height:510px}
+.work-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% center}
+.work-photo:after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(8,14,21,.92))}
+.work-photo figcaption{position:absolute;bottom:26px;left:28px;right:24px;z-index:1;color:#fff;font-size:1.125rem;font-weight:600;line-height:1.5}
+.work-photo figcaption span{display:block;font-size:.75rem;font-weight:400;color:#c5ceda;margin-top:8px}
+.work-index{background:#142234;color:#fff}
+.work-index .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:16px 45px;padding-top:23px;padding-bottom:23px}
+.work-index span{color:#b8c6d7;margin-right:auto;font-size:.9375rem}
+.work-index a{font-size:1rem;text-underline-offset:6px;text-decoration:underline;text-decoration-color:#5c7595;white-space:normal}
+.work-index a:hover{text-decoration-color:#fff}
+.work-details{display:grid;grid-template-columns:1fr 1fr;gap:90px}
+.work-details>section{scroll-margin-top:130px;min-width:0}
+.work-details h2{font-size:2.15rem;font-weight:600;margin-bottom:22px}
+.work-details p{color:#45525f;font-size:1.0625rem;line-height:1.8;max-width:55ch}
+.garage-feature{background:#10263e;color:#fff;padding:65px 0;scroll-margin-top:100px}
+.garage-feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.garage-feature .eyebrow{color:#a8caff}
+.garage-feature h2{font-size:clamp(2rem,3.4vw,3.3rem);font-weight:600;margin-bottom:30px;line-height:1.18}
+.garage-feature h3{font-size:1.4rem;font-weight:600}
+.garage-feature p:not(.eyebrow){color:#cdd9e6;font-size:1.0625rem;line-height:1.8}
+.quote-spread{display:grid;grid-template-columns:1.15fr .85fr;gap:100px;align-items:start}
+.quote-spread h2{font-size:2.7rem;font-weight:600}
+.quote-spread>div>p:not(.eyebrow){font-size:1.0625rem;color:#45525f;max-width:55ch}
+.job-note{background:#f1f4f7;border-top:4px solid #075bff;padding:30px 34px}
+.job-note h3{font-size:1.35rem;font-weight:600}
+.job-note ul{padding-left:20px;margin-bottom:20px;line-height:1.6}
+.job-note li{margin:8px 0}
+.job-note p{font-size:.9375rem;color:#53606c}
+
+/* Service Areas: real regional photography with clear coverage information. */
+.region-hero{position:relative;isolation:isolate;overflow:hidden;background:#0e1b2b;color:#fff}
+.region-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;z-index:-2}
+.region-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,17,31,.89),rgba(6,17,31,.59) 42%,rgba(6,17,31,.10)),linear-gradient(0deg,rgba(6,17,31,.3),transparent 60%)}
+.region-hero-copy{padding-top:32px;padding-bottom:54px;min-height:470px}
+.region-hero .breadcrumb{margin-bottom:42px}
+.region-hero .eyebrow{color:#bdD7ff;font-size:.8125rem;letter-spacing:.09em}
+.region-hero h1{font-size:clamp(3rem,5vw,4.8rem);font-weight:600;line-height:1.1;margin-bottom:24px}
+.region-hero-copy>p:last-child{font-size:1.125rem;color:#e0e9f3;line-height:1.6;margin-bottom:0}
+.region-credit{background:#f1f4f7;padding:10px 0;color:#606d7a;font-size:.75rem;line-height:1.6}
+.region-credit a{text-decoration:underline;text-underline-offset:2px}
+.region-spread{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:center}
+.region-statement h2{font-size:2.7rem;font-weight:600;line-height:1.2}
+.region-statement>p:not(.eyebrow){font-size:1.125rem;line-height:1.75;color:#45525f;max-width:46ch}
+.region-statement .button{margin-top:10px}
+.coverage-summary{border-left:1px solid #cfd9e5;padding-left:42px}
+.coverage-summary h3{font-size:1.5rem;font-weight:600}
+.coverage-summary>p{color:#53606c;font-size:1.0625rem}
+.coverage-endpoints{border-top:1px solid #dce2e8;border-bottom:1px solid #dce2e8;padding:22px 0;display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}
+.coverage-endpoints span{display:block;font-size:.8125rem;color:#607284;margin-bottom:7px}
+.coverage-endpoints strong{display:block;font-size:1.45rem;line-height:1.2;font-weight:600}
+.coverage-summary .small-note{font-size:.8125rem;line-height:1.65;margin-bottom:0}
+.region-practical{background:#f1f4f7;padding:65px 0}
+.region-practical-grid{display:grid;grid-template-columns:1fr 1fr;gap:95px;align-items:start}
+.region-practical h2{font-size:2.4rem;font-weight:600;line-height:1.2}
+.region-practical p{max-width:44ch;color:#53606c;font-size:1.0625rem}
+.access-list{margin:0}
+.access-list>div{padding:18px 0;border-bottom:1px solid #cfd9e5}
+.access-list>div:first-child{padding-top:0}
+.access-list dt{font-weight:600;font-size:1.15rem;margin-bottom:8px}
+.access-list dd{margin:0;color:#53606c;font-size:1rem;line-height:1.75}
+@media(max-width:1000px){
+  .work-intro-grid{gap:30px;grid-template-columns:1fr 1fr}
+  .work-intro h1{font-size:3rem}
+  .work-details,.garage-feature-grid,.quote-spread,.region-spread,.region-practical-grid{gap:45px}
+  .work-index .wrap{gap:15px 25px}
+  .coverage-summary{padding-left:30px}
+  .region-hero-copy{min-height:440px}
+}
+@media(max-width:780px){
+  .work-intro-grid{grid-template-columns:1fr;gap:0}
+  .work-intro-copy{padding:28px 0 35px}
+  .work-intro .breadcrumb{margin-bottom:26px}
+  .work-intro h1{font-size:clamp(2.5rem,9vw,3.4rem)}
+  .work-photo{min-height:310px;margin:0 -20px}
+  .work-photo figcaption{left:20px;bottom:22px;font-size:1rem}
+  .work-photo>img{object-position:center 55%}
+  .work-index .wrap{gap:12px 20px;padding-top:20px;padding-bottom:20px}
+  .work-index span{width:100%;margin-right:0}
+  .work-index a{font-size:.9375rem}
+  .work-details,.garage-feature-grid,.quote-spread,.region-spread,.region-practical-grid{grid-template-columns:1fr;gap:35px}
+  .work-details h2{font-size:1.9rem}
+  .work-details p{font-size:1rem}
+  .work-details>section+section{padding-top:30px;border-top:1px solid var(--line)}
+  .garage-feature,.region-practical{padding:48px 0}
+  .garage-feature h2{font-size:2.3rem}
+  .garage-feature-grid{gap:38px}
+  .quote-spread h2,.region-statement h2{font-size:2.3rem}
+  .job-note{padding:25px}
+  .region-hero-copy{min-height:440px;padding-top:26px;padding-bottom:40px}
+  .region-hero h1{font-size:clamp(2.7rem,10.4vw,3.8rem)}
+  .region-hero>img{object-position:58% center}
+  .region-hero:after{background:linear-gradient(90deg,rgba(6,17,31,.88),rgba(6,17,31,.49))}
+  .region-hero .breadcrumb{margin-bottom:45px}
+  .region-credit{font-size:.75rem}
+  .coverage-summary{padding:28px 0 0;border-left:0;border-top:1px solid var(--line)}
+  .region-practical h2{font-size:2rem}
+  .coverage-endpoints strong{font-size:1.3rem}
+}
