@@ -4,7 +4,7 @@ Official website serving Ogden to Provo, Utah.
 
 Published through GitHub Pages from `main`, `/docs`. Editable source is in `site/`.
 
-To rebuild: run `npm run build`, `npm run check`, and `node scripts/export-offline.mjs` from `site/`; copy the resulting page and asset files into `docs/`. Keep any live custom-domain configuration. Commit and push the update.
+To rebuild: run `npm run build` and `npm run check` from `site/`; copy the resulting `dist/` page and asset files into `docs/`. Keep any live custom-domain configuration. Commit and push the update.
 
 Business details are configured in `site/site.config.json`. Google review buttons activate when the genuine business profile and review-request URLs are supplied.
 
