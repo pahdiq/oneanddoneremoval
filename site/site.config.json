@@ -1,11 +1,36 @@
 {
-  "name": "One and Done Removal",
+  "name": "1 & Done Removal",
   "domain": "https://oneanddoneremoval.com",
   "phone": "+1 (801) 458-7939",
   "email": "1anddoneremoval@gmail.com",
   "googleBusinessUrl": "",
   "googleReviewUrl": "",
-  "serviceArea": "Salt Lake City to Provo, Utah",
+  "serviceArea": "Ogden to Provo, Utah",
   "confirmedServices": [],
-  "indexable": true
+  "indexable": true,
+  "alternateNames": [
+    "1 and Done Removal",
+    "1&Done Removal"
+  ],
+  "serviceCities": [
+    "Ogden",
+    "Layton",
+    "Kaysville",
+    "Farmington",
+    "Bountiful",
+    "Salt Lake City",
+    "Murray",
+    "Midvale",
+    "West Jordan",
+    "Sandy",
+    "South Jordan",
+    "Draper",
+    "Bluffdale",
+    "Lehi",
+    "American Fork",
+    "Pleasant Grove",
+    "Lindon",
+    "Orem",
+    "Provo"
+  ]
 }

@@ -1,6 +1,6 @@
-# One and Done Removal
+# 1 & Done Removal
 
-Official website serving Salt Lake City to Provo, Utah.
+Official website serving Ogden to Provo, Utah.
 
 Published through GitHub Pages from `main`, `/docs`. Editable source is in `site/`.
 

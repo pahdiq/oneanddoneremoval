@@ -7,5 +7,5 @@ export function googleReviews(config, esc) {
 }
 
 export function reviewsBody(config, esc) {
-  return `<section class="section"><div class="wrap reviews-layout"><div><h2>Read a review. Leave a review.</h2><p>Choosing someone to help clear your home is easier when you can hear from their customers. Read about other experiences on Google, or share your own after a job.</p>${googleReviews(config, esc)}<p class="review-invitation">Every customer is welcome to leave an honest review.</p></div><aside><h3>Have a question about your job?</h3><p>You can also contact us directly to discuss a pickup or share feedback with the team.</p><a class="text-link" href="/contact/">Contact One and Done Removal</a></aside></div></section>`;
+  return `<section class="section"><div class="wrap reviews-layout"><div><h2>Read a review. Leave a review.</h2><p>Choosing someone to help clear your home is easier when you can hear from their customers. Read about other experiences on Google, or share your own after a job.</p>${googleReviews(config, esc)}<p class="review-invitation">Every customer is welcome to leave an honest review.</p></div><aside><h3>Have a question about your job?</h3><p>You can also contact us directly to discuss a pickup or share feedback with the team.</p><a class="text-link" href="/contact/">Contact 1 & Done Removal</a></aside></div></section>`;
 }
