@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { googleReviews } from './content.mjs';
 import { validateConfig } from './config.mjs';
 const config=JSON.parse(fs.readFileSync('site.config.json','utf8'));
-const routes=['/','/services/','/service-areas/','/reviews/','/contact/','/privacy/'];
+const routes=['/','/services/','/service-areas/','/junk-removal-provo/','/reviews/','/contact/','/privacy/'];
 const titles=new Set(),descriptions=new Set();let references=0;
 for(const route of routes){
   const html=fs.readFileSync(path.join('dist',route,'index.html'),'utf8');
@@ -17,6 +17,10 @@ for(const route of routes){
   assert(html.includes(`content="${config.indexable?'index,follow,max-image-preview:large':'noindex,follow'}"`),`${route}: index directive`);
   const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   assert(schema['@graph'].some(x=>x['@type']==='LocalBusiness'),`${route}: business schema`);
+  const website=schema['@graph'].find(x=>x['@type']==='WebSite');
+  assert.equal(website?.name,config.name,`${route}: preferred site name`);
+  assert.equal(website?.url,config.domain+'/',`${route}: site identity must use primary domain`);
+  assert(html.includes('href="/assets/favicon-192.png" sizes="192x192"'),`${route}: crawlable raster favicon`);
   assert(!html.includes('AggregateRating'),`${route}: self-serving review rating`);
   assert(!/href="(?:tel:|sms:|mailto:)"/.test(html),`${route}: empty contact link`);
   for(const match of html.matchAll(/(?:href|src)="(\/[^"#]*)(#[^"]*)?"/g)){
@@ -29,6 +33,24 @@ for(const route of routes){
   for(const match of html.matchAll(/srcset="([^"]+)"/g)) for(const candidate of match[1].split(',')) assert(fs.existsSync(path.join('dist',candidate.trim().split(/\s+/)[0])),`${route}: missing responsive image`);
 }
 const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');
+const provo=fs.readFileSync('dist/junk-removal-provo/index.html','utf8');
+const provoGraph=JSON.parse(provo.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
+const localService=provoGraph.find(x=>x['@type']==='Service');
+assert.equal(localService?.areaServed.name,'Provo','Provo service must describe the actual city');
+assert.equal(localService?.provider['@id'],config.domain+'/#business','One business identity, no invented Provo branch');
+assert.equal(provoGraph.find(x=>x['@type']==='BreadcrumbList').itemListElement[1].item,config.domain+'/service-areas/','Local page hierarchy');
+assert(provo.includes('Starting price only; final price'),'Starting price must be qualified');
+for(const entry of ['','services/','service-areas/']){
+  const html=fs.readFileSync('dist/'+entry+'index.html','utf8');
+  const main=html.split('<main id="main">')[1].split('</main>')[0];
+  assert(main.includes('href="/junk-removal-provo/"'),`${entry}: local page needs a contextual link`);
+}
+for(const size of [96,192]){
+  const png=fs.readFileSync(`dist/assets/favicon-${size}.png`);
+  assert.equal(png.subarray(1,4).toString(),'PNG','Real PNG icon');
+  assert.equal(png.readUInt32BE(16),size,'Square icon width');
+  assert.equal(png.readUInt32BE(20),size,'Square icon height');
+}
 for(const route of routes)assert(sitemap.includes(`<loc>${config.domain+route}</loc>`),`sitemap missing ${route}`);
 assert(fs.existsSync('dist/assets/garage-800.webp'));
 assert(fs.existsSync('dist/assets/garage-hero.webp'));

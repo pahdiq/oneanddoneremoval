@@ -1,3 +1,29 @@
+/* Provo: local pickup information and the owner's confirmed starting price. */
+.provo-hero{background:#f3f5f7;padding:30px 0 65px}
+.provo-hero .breadcrumb{color:#53606c;margin-bottom:40px;display:flex;flex-wrap:wrap;gap:0 8px}
+.provo-hero .breadcrumb a{color:#18232e}
+.provo-hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:85px;align-items:center}
+.provo-hero h1{font-size:clamp(3rem,5vw,4.8rem);line-height:1.08;font-weight:600}
+.provo-hero .lead{color:#293e54;max-width:38ch}
+.provo-hero-grid>div>p:not(.eyebrow){max-width:54ch}
+.provo-hero .actions{gap:20px}
+.provo-quote{background:#10263e;color:#fff;padding:36px 38px;border-top:5px solid #075bff}
+.provo-quote .eyebrow{color:#bfd8ff;margin-bottom:0}
+.provo-quote .provo-price{font-size:6rem;line-height:1.1;font-weight:600;margin:8px 0 25px}
+.provo-quote h2{font-size:1.65rem;line-height:1.2}
+.provo-quote p{color:#e0e9f3}
+.provo-quote .small-note{color:#c7d4e3;line-height:1.6;margin-bottom:0}
+.provo-services{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.provo-services article{border-top:2px solid #b8c8da;padding-top:24px}
+.provo-services h3{font-size:1.5rem;font-weight:600}
+.provo-services p{color:#45525f}
+.provo-options{background:#f1f4f7;padding:48px 0}
+.provo-options h2{font-size:2.2rem}
+.provo-options p{max-width:80ch}
+#provo-items,#provo-planning,#provo-questions,#provo-options{scroll-margin-top:115px}
+@media(max-width:1000px){.provo-hero-grid{gap:40px}.provo-quote{padding:28px}.provo-services{gap:25px}}
+@media(max-width:780px){.provo-hero{padding-bottom:40px}.provo-hero .breadcrumb{margin-bottom:28px}.provo-hero-grid,.provo-services{grid-template-columns:1fr;gap:28px}.provo-hero h1{font-size:clamp(2.8rem,10vw,3.8rem)}.provo-quote .provo-price{font-size:4.5rem}.provo-services h3{font-size:1.45rem}}
+
 /* Services: a garage photograph, open text columns, and one practical quote note. */
 .work-intro{background:#f3f5f7;overflow:hidden}
 .work-intro-grid{display:grid;grid-template-columns:1fr 1.13fr;align-items:stretch;gap:55px;min-height:510px}
