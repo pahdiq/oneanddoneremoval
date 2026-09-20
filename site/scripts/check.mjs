@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { googleReviews } from './content.mjs';
 import { validateConfig } from './config.mjs';
 const config=JSON.parse(fs.readFileSync('site.config.json','utf8'));
-const routes=['/','/services/','/service-areas/','/junk-removal-provo/','/reviews/','/contact/','/privacy/'];
+const routes=['/','/services/','/service-areas/','/reviews/','/contact/','/privacy/'];
 const titles=new Set(),descriptions=new Set();let references=0;
 for(const route of routes){
   const html=fs.readFileSync(path.join('dist',route,'index.html'),'utf8');
@@ -33,18 +33,20 @@ for(const route of routes){
   for(const match of html.matchAll(/srcset="([^"]+)"/g)) for(const candidate of match[1].split(',')) assert(fs.existsSync(path.join('dist',candidate.trim().split(/\s+/)[0])),`${route}: missing responsive image`);
 }
 const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');
-const provo=fs.readFileSync('dist/junk-removal-provo/index.html','utf8');
-const provoGraph=JSON.parse(provo.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
-const localService=provoGraph.find(x=>x['@type']==='Service');
-assert.equal(localService?.areaServed.name,'Provo','Provo service must describe the actual city');
-assert.equal(localService?.provider['@id'],config.domain+'/#business','One business identity, no invented Provo branch');
-assert.equal(provoGraph.find(x=>x['@type']==='BreadcrumbList').itemListElement[1].item,config.domain+'/service-areas/','Local page hierarchy');
-assert(provo.includes('Starting price only; final price'),'Starting price must be qualified');
-for(const entry of ['','services/','service-areas/']){
-  const html=fs.readFileSync('dist/'+entry+'index.html','utf8');
-  const main=html.split('<main id="main">')[1].split('</main>')[0];
-  assert(main.includes('href="/junk-removal-provo/"'),`${entry}: local page needs a contextual link`);
+assert(!sitemap.includes('/junk-removal-provo/'),'Retired city page must not be in sitemap');
+const retired=fs.readFileSync('dist/junk-removal-provo/index.html','utf8');
+assert(retired.includes('http-equiv="refresh" content="0;url=/service-areas/"')&&retired.includes('noindex,follow'),'Old URL must only forward to regional coverage');
+const serviceHtml=fs.readFileSync('dist/services/index.html','utf8');
+const graph=JSON.parse(serviceHtml.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
+const service=graph.find(x=>x['@type']==='Service');
+assert.deepEqual(service.areaServed.map(x=>x.name),config.serviceCities,'Service must cover the full confirmed corridor');
+assert.equal(service.provider['@id'],config.domain+'/#business','One regional business identity');
+for(const route of routes){
+  const page=fs.readFileSync(path.join('dist',route,'index.html'),'utf8');
+  assert(!page.includes('/junk-removal-provo/'),'No links to retired city landing page');
 }
+const areaContent=fs.readFileSync('dist/service-areas/index.html','utf8').split('<main id="main">')[1].split('</main>')[0];
+for(const city of config.serviceCities)assert(areaContent.includes(city),`Missing visible coverage: ${city}`);
 for(const size of [96,192]){
   const png=fs.readFileSync(`dist/assets/favicon-${size}.png`);
   assert.equal(png.subarray(1,4).toString(),'PNG','Real PNG icon');
